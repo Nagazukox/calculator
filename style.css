@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif,Arial;
+}
+
+body {
+    background-color: #FCEACD;
+}
+
+.calculadora {
+    width: 500px;
+    margin: auto;
+}
+
+.pantalla {
+    align-items: end;
+    padding-right: 9%;
+    background-color: #A0F9FF;
+
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.numero-actual {
+    font-size: 25px;
+    margin-top: -5px;
+}
+
+.siguiente-input {
+    font-style: italic;
+    margin-top: 5px;
+    color: gray;
+}
+
+.numeros {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.numeros button {
+    width: 200px; 
+    height: 95px;
+    width: 25%;
+    min-width: 125px;
+    background-color: #FFADB4;
+    border: none;
+    font-size: large;
+}
+
+.numeros button:hover {
+    background-color: #ffadb494;
+}
