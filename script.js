@@ -8,6 +8,8 @@ const signo_multi = document.querySelector('.multiplicar');
 const signo_dividir = document.querySelector('.dividir');
 const signo_calcular = document.querySelector('.calcular');
 const cambiar_signo = document.querySelector('.signo');
+const signo_ce = document.querySelector('.CE');
+const signo_c = document.querySelector('.C');
 
 let numero_actual_txt = "";
 let siguiente_numero_txt = "";
@@ -117,35 +119,75 @@ function sumar_numero() {
 function restar_numero() {
 
 
-        ultimo_numero = numero_actual_txt;
-        //Pasar número hacia arriba con signo de restar
-        siguiente_numero_txt = (numero_actual.textContent + " -");
-        siguiente_numero.textContent = siguiente_numero_txt;
 
-        //Restablecer números
-        numero_actual.textContent = numero_actual_txt;
-        numero_actual_txt = "";
+        if(!recien_calculado){
+
+            if (numero_actual_txt.length >= 1) {
+                ultimo_numero = numero_actual_txt;
+                //Pasar número hacia arriba con signo de restar
+                siguiente_numero_txt = (numero_actual.textContent + " -");
+                siguiente_numero.textContent = siguiente_numero_txt;
+        
+                //Restablecer números
+                numero_actual.textContent = numero_actual_txt;
+                numero_actual_txt = "";
+            } else {
+                numero_actual_txt = "";
+                numero_actual.textContent = "0";
+                siguiente_numero_txt = (numero_actual.textContent + " -");
+                siguiente_numero.textContent = siguiente_numero_txt;
+            }
+    
+        //Se activa si se ha hecho una operación antes
+        } else if (recien_calculado) {
+            
+                ultimo_numero = resultado;
+                //Pasar número hacia arriba con signo de restar
+                siguiente_numero_txt = (resultado + " -");
+                siguiente_numero.textContent = siguiente_numero_txt;
+        
+                //Restablecer números
+                numero_actual.textContent = 0;
+                numero_actual_txt = "";
+        }
 
 }
 
 function multiplicar_numero() {
 
 
-    if (numero_actual_txt.length >= 1) {
-        ultimo_numero = numero_actual_txt;
-        //Pasar número hacia arriba con signo de multiplicar
-        siguiente_numero_txt = (numero_actual.textContent + " \u00D7");
-        siguiente_numero.textContent = siguiente_numero_txt;
 
-        //Restablecer números
-        numero_actual.textContent = numero_actual_txt;
-        numero_actual_txt = "";
-    } else {
-        numero_actual_txt = "";
-        numero_actual.textContent = "0";
-        siguiente_numero_txt = (numero_actual.textContent + " \u00D7");
-        siguiente_numero.textContent = siguiente_numero_txt;
+    if(!recien_calculado){
+
+        if (numero_actual_txt.length >= 1) {
+            ultimo_numero = numero_actual_txt;
+            //Pasar número hacia arriba con signo de multiplicar
+            siguiente_numero_txt = (numero_actual.textContent + " \u00D7");
+            siguiente_numero.textContent = siguiente_numero_txt;
+    
+            //Restablecer números
+            numero_actual.textContent = numero_actual_txt;
+            numero_actual_txt = "";
+        } else {
+            numero_actual_txt = "";
+            numero_actual.textContent = "0";
+            siguiente_numero_txt = (numero_actual.textContent + " \u00D7");
+            siguiente_numero.textContent = siguiente_numero_txt;
+        }
+
+    //Se activa si se ha hecho una operación antes
+    } else if (recien_calculado) {
+        
+            ultimo_numero = resultado;
+            //Pasar número hacia arriba con signo de multiplicar
+            siguiente_numero_txt = (resultado + " \u00D7");
+            siguiente_numero.textContent = siguiente_numero_txt;
+    
+            //Restablecer números
+            numero_actual.textContent = 0;
+            numero_actual_txt = "";
     }
+
 }
 
 function dividir_numero() {
@@ -295,5 +337,22 @@ signo_calcular.addEventListener('click', () => {
 cambiar_signo.addEventListener('click', () => {
 
     cambiazo();
+
+});
+
+signo_c.addEventListener('click', () => {
+
+    numero_actual_txt = "0";
+    numero_actual.textContent = numero_actual_txt;
+
+});
+
+signo_ce.addEventListener('click', () => {
+
+    numero_actual_txt = "0";
+    numero_actual.textContent = numero_actual_txt;
+
+    siguiente_numero_txt = "";
+    siguiente_numero.textContent = siguiente_numero_txt;
 
 });
